@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cl.bennu.note.mapper.iface.UserMapper">
+
+    <resultMap id="resultMapUser" type="cl.bennu.note.domain.User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="lastLogin" column="last_login"/>
+        <result property="lastPassword" column="last_password"/>
+        <result property="active" column="active"/>
+    </resultMap>
+
+    <sql id="sqlUser">
+        select id
+        , username
+        , password
+        , active
+        , lastLogin
+        , lasPassword
+        from user
+    </sql>
+
+    <select id="getAll" resultMap="resultMapUser" >
+        SELECT id, username, password, last_login, last_password, active FROM "user"
+    </select>
+
+    <select id="getById" resultMap="resultMapUser" parameterType="java.lang.Long">
+        SELECT id, username, password, last_login, last_password, active FROM "user" WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="cl.bennu.note.domain.User" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO "user" (username, password, last_login, last_password, active)
+        VALUES (#{username}, #{password}, #{lastLogin}, #{lastPassword}, #{active})
+    </insert>
+
+    <update id="update" parameterType="cl.bennu.note.domain.User" >
+        UPDATE "user" SET
+        username = #{username},
+        password = #{password},
+        last_login = #{lastLogin},
+        last_password = #{lastPassword},
+        active = #{active}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM "user" WHERE id = #{id}
+    </delete>
+
+</mapper>
