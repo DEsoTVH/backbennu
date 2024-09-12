@@ -1,16 +1,15 @@
 package cl.bennu.note.domain;
 
-import lombok.AllArgsConstructor;
+import cl.bennu.note.domain.base.BaseDomain;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Note {
-    private Long id;
+@EqualsAndHashCode(callSuper=false)
+public class Note extends BaseDomain {
     private Long categoryId;
     private Long noteTypeid;
+//    private NoteType noteType;
     private Long labelId;
     private Long statusId;
     private String code;

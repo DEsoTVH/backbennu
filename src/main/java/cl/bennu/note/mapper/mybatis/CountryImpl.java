@@ -5,7 +5,6 @@ import cl.bennu.note.domain.Country;
 import cl.bennu.note.mapper.iface.CountryMapper;
 import cl.bennu.note.mapper.mybatis.base.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CountryImpl extends MyBatisUtils implements CountryMapper {

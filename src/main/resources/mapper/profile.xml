@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cl.bennu.note.mapper.iface.ProfileMapper">
+
+    <resultMap id="resultMapProfile" type="cl.bennu.note.domain.Profile">
+        <result property="id" column="id"/>
+        <result property="usuarioId" column="user_id"/>
+        <result property="mail" column="mail"/>
+        <result property="name" column="name"/>
+        <result property="alias" column="alias"/>
+        <result property="countryId" column="country_id"/>
+        <result property="address" column="address"/>
+        <result property="phonePrefixId" column="phone_prefix_id"/>
+        <result property="phone" column="phone"/>
+        <result property="photo" column="photo"/>
+        <result property="statusProfile" column="status_profile"/>
+    </resultMap>
+
+    <sql id="sqlProfile">
+        select id, user_id, mail, name, alias, country_id, address, phone_prefix_id, phone, photo, status_profile from profile;
+    </sql>
+
+    <select id="getAll" resultMap="resultMapProfile">
+        <include refid="sqlProfile"/>
+    </select>
+
+    <select id="getById" resultMap="resultMapProfile" parameterType="java.lang.Long">
+        <include refid="sqlProfile"/>
+        where id = #{id}        
+    </select>
+
+    <update id="updateProfile" parameterType="cl.bennu.note.domain.Profile">
+        update profile
+        user_id=#{usuarioId},
+        mail=#{mail},
+        name=#{name},
+        alias=#{alias},
+        country_id=#{countryId},
+        address=#{address},
+        phone_prefix_id=#{phonePrefixId},
+        phone=#{phone},
+        photo=#{photo},
+        status_profile=#{statusProfile}
+        where id=#{id};
+    </update>
+
+    <delete id="deleteProfileById" parameterType="java.lang.Long">
+        delete from profile where id = #{id};
+    </delete>
+    
+    <insert id="insertProfile" parameterType="cl.bennu.note.domain.Profile">
+        insert into profile (user_id, mail, name, alias, country_id, address, phone_prefix_id, phone, photo, status_profile)
+        values (#{usuarioId}, #{mail}, #{name}, #{alias}, #{countryId}, #{address}, #{phonePrefixId}, #{phone}, #{photo}, #{statusProfile});
+    </insert> <!--(#{ejemploId}) marcadores de parámetros
+    MyBatis reemplazará estos marcadores con los valores 
+    correspondientes del objeto Profile pasado como parámetro.-->   
+</mapper>

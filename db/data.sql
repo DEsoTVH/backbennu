@@ -269,3 +269,14 @@ INSERT INTO category (user_id, "label_id", "name" , active) values
 (25, 1, 'Cumpleaños',false),
 (26, 1, 'Cumpleaños',true)
 
+    private Long userId;
+    private Long labelId;
+    private String name;
+    private Boolean active;
+    private Long categoryId;
+
+
+INSERT INTO category (user_id , label_id , "name" , active , category_id) values
+
+(50, 1, 'Aniversario gato', true, 5);
+

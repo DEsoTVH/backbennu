@@ -1,6 +1,5 @@
 package cl.bennu.note.api;
 
-
 import cl.bennu.note.domain.NoteType;
 import cl.bennu.note.service.NoteService;
 import jakarta.inject.Inject;

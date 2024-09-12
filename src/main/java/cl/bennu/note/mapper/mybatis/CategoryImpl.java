@@ -27,7 +27,7 @@ public class CategoryImpl extends MyBatisUtils implements CategoryMapper {
         } catch (Exception e) {
             System.err.println("Error al insertar categoria: " + e.getMessage());
             e.printStackTrace();
-        }
+        } 
     }
 
     @Override
@@ -51,11 +51,5 @@ public class CategoryImpl extends MyBatisUtils implements CategoryMapper {
             sqlSession.rollback();
         }
     }
-
-    @Override
-    public List<Category> findCategory(Category category) {
-        return open().selectList("findCategory", category);
-    }
-
 
 }

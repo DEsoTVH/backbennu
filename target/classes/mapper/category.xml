@@ -11,30 +11,43 @@
         <result property="labelId" column="label_id"/>
         <result property="name" column="name"/>
         <result property="active" column="active"/>
+        <result property="categoryId" column="category_id"/>
     </resultMap>
 
-    <insert id="insertCategory" parameterType="cl.bennu.note.domain.Category" keyProperty="id" useGeneratedKeys="true" >
-        insert into category (user_id,label_id,name,active)
-        values (#{userId},#{labelId},#{name},#{active})
+    <sql id="sqlCategory">
+        select id
+        , User_id
+        , Label_id
+        , name
+        , active
+        , category_id
+        from category
+    </sql>
+
+    <insert id="insert" parameterType="cl.bennu.note.domain.Category" keyProperty="id" useGeneratedKeys="true" >
+        insert into category (user_id,label_id,name,active,category_id)
+        values (#{userId},#{labelId},#{name},#{active},#{categoryId})
     </insert>
 
-    <select id="selectCategory" resultMap="resultMapCategory" >
-        SELECT id, user_id, label_id, name, active FROM category
+
+    <select id="getAll" resultMap="resultMapCategory" >
+        SELECT id, user_id, label_id, name, active, category_id FROM category
     </select>
 
-    <select id="selectCategoryById" resultType="cl.bennu.note.domain.Category"  parameterType="java.lang.Long"  >
-        SELECT id, user_id, label_id, name, active FROM category WHERE id = #{id}
+    <select id="getById" resultMap="resultMapCategory"  parameterType="java.lang.Long" >
+        SELECT id, user_id, label_id, name, active, category_id FROM category WHERE id = #{id}
     </select>
 
-    <update id="updateCategory" parameterType="cl.bennu.note.domain.Category">
+    <update id="update" parameterType="cl.bennu.note.domain.Category">
         UPDATE category SET
         id = #{id},
         name = #{name},
-        active = #{active}
+        active = #{active},
+        category_id = #{categoryId}
         WHERE id = #{id}
     </update>
 
-    <delete id="deleteCategory" parameterType="cl.bennu.note.domain.Category">
+    <delete id="deleteById" parameterType="cl.bennu.note.domain.Category">
         delete from category where id = #{id}
     </delete>
 

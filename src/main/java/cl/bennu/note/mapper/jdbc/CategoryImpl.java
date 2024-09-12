@@ -1,7 +1,6 @@
 package cl.bennu.note.mapper.jdbc;
 
 import cl.bennu.note.domain.Category;
-import cl.bennu.note.domain.User;
 import cl.bennu.note.mapper.iface.CategoryMapper;
 import cl.bennu.note.mapper.jdbc.base.JDBCUtils;
 
@@ -130,12 +129,5 @@ public class CategoryImpl extends JDBCUtils implements CategoryMapper {
         }finally {
             this.close(connection);
         }
-
-
-    }
-
-    @Override
-    public List<Category> findCategory(Category category) {
-        return null;
     }
 }

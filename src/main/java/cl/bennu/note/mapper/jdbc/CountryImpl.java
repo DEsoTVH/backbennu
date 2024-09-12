@@ -1,9 +1,5 @@
 package cl.bennu.note.mapper.jdbc;
-
-import cl.bennu.note.domain.Category;
 import cl.bennu.note.domain.Country;
-import cl.bennu.note.domain.Note;
-import cl.bennu.note.mapper.iface.CategoryMapper;
 import cl.bennu.note.mapper.iface.CountryMapper;
 import cl.bennu.note.mapper.jdbc.base.JDBCUtils;
 
